@@ -55,9 +55,7 @@ private slots:
     void on_searchCata_1_textChanged(const QString &arg1);
     void on_searchCata_2_textChanged(const QString &arg1);
     void on_min1Button_clicked();
-    void on_close1Button_clicked(); 
-
-    void on_rootTable_activated(const QModelIndex &index);
+    void on_close1Button_clicked();
 
 private:
     void setWindow();

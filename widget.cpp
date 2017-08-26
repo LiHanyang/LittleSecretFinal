@@ -133,6 +133,7 @@ void Widget::setUi()
     ui->rootDeleteButton->setEnabled(false);
     ui->accountDeleteButton->setEnabled(false);
     ui->searchCata_2->setEnabled(false);
+    ui->accountAddButton->setEnabled(false);
 }
 
 
@@ -633,9 +634,4 @@ void Widget::on_min1Button_clicked()
 void Widget::on_close1Button_clicked()
 {
     exit(0);
-}
-
-void Widget::on_rootTable_activated(const QModelIndex &index)
-{
-
 }
