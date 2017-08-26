@@ -257,6 +257,7 @@ void Widget::on_rootDeleteButton_clicked()
     ui->rootDeleteButton->setEnabled(false);
     ui->saveButton->setEnabled(false);
     ui->accountAddButton->setEnabled(false);
+    ui->searchCata_2->setEnabled(false);
     catalogue_1 = "";
     catalogue_2 = "";
 }
