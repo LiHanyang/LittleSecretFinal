@@ -123,6 +123,19 @@ void Dialog::on_submitButton_clicked()
 {
     QString uname = ui->newAccountEdit->text();
     QString upasswd = ui->newPasswordEdit->text();
+    QString check = ui->checkPasswordEdit->text();
+    if(upasswd != check)
+    {
+        QMessageBox msgBox;
+        msgBox.setWindowFlags(Qt::FramelessWindowHint);
+        msgBox.setStyleSheet("background-color:rgb(193,213,250)");
+        msgBox.setText(tr("Register failed!     "));
+        msgBox.exec();
+        ui->newPasswordEdit->clear();
+        ui->checkPasswordEdit->clear();
+        return;
+    }
+
     QString s = QString("insert into user values(%1, '%2', '%3', NULL, NULL, NULL, NULL) ").arg(++id).arg(uname).arg(upasswd);
     QSqlQuery query;
     bool ok = query.exec(s);
