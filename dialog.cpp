@@ -124,20 +124,35 @@ void Dialog::on_submitButton_clicked()
     QString uname = ui->newAccountEdit->text();
     QString upasswd = ui->newPasswordEdit->text();
     QString check = ui->checkPasswordEdit->text();
-    if(upasswd != check)
+    QString s = QString("select * from user where name=='%1' ").arg(uname);
+    QSqlQuery query;
+    query.exec(s);
+    if(query.first())
     {
         QMessageBox msgBox;
         msgBox.setWindowFlags(Qt::FramelessWindowHint);
         msgBox.setStyleSheet("background-color:rgb(193,213,250)");
-        msgBox.setText(tr("Register failed!     "));
+        msgBox.setText(tr("User already exists!     "));
         msgBox.exec();
         ui->newPasswordEdit->clear();
         ui->checkPasswordEdit->clear();
         return;
     }
 
-    QString s = QString("insert into user values(%1, '%2', '%3', NULL, NULL, NULL, NULL) ").arg(++id).arg(uname).arg(upasswd);
-    QSqlQuery query;
+    if(upasswd != check)
+    {
+        QMessageBox msgBox;
+        msgBox.setWindowFlags(Qt::FramelessWindowHint);
+        msgBox.setStyleSheet("background-color:rgb(193,213,250)");
+        msgBox.setText(tr("The two passwords don't match!     "));
+        msgBox.exec();
+        ui->newPasswordEdit->clear();
+        ui->checkPasswordEdit->clear();
+        return;
+    }
+
+    s = QString("insert into user values(%1, '%2', '%3', NULL, NULL, NULL, NULL) ").
+            arg(++id).arg(uname).arg(upasswd);
     bool ok = query.exec(s);
     if(ok)
     {
