@@ -7,7 +7,6 @@ int id;
 
 int main(int argc, char *argv[])
 {
-
     QSqlDatabase db=QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("dbname");
     db.open();

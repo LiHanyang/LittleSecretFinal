@@ -7,7 +7,7 @@
 QT       += core gui
 QT += sql
 
-#CONFIG += console
+CONFIG += console
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

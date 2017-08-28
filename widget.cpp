@@ -67,7 +67,7 @@ bool Widget::eventFilter(QObject *watched, QEvent *event)
                          QDateTime dateTime = QDateTime::fromString(orcWidget.Code(query.value(6).toString()), "yyyy-MM-dd hh:mm:ss");
                          if(dateTime.addSecs(15).secsTo(currentTime) > 0)
                          {
-                             QToolTip::showText(helpEvent->globalPos(), "You have kept this password for 1 year. Please modify it.");
+                             QToolTip::showText(helpEvent->globalPos(), tr("You have kept this password for 1 year. Please modify it."));
                          }
                      }
                  } else {
@@ -169,22 +169,21 @@ void Widget::on_exitButton_clicked()
 
 void Widget::on_rootAddButton_clicked()
 {
-    Msg *msg = new Msg();
-    msg->exec();
+    Msg msg;
+    msg.exec();
 
-    if ("" == msg->trans) return;
+    if ("" == msg.trans) return;
 
-    bool ok;
-    qDebug() << msg->trans;
-    QString cata = msg->trans;
-    qDebug() << cata;
-    QSqlQuery query;
-    QString s = QString("select * from user where name=='%1' ").arg(orcWidget.Code(userAccount));
-    query.exec(s);
-    query.first();
+    //bool ok;
+    QString cata = msg.trans;
+    //QSqlQuery query;
+    //QString s = QString("select * from user where name=='%1' ").arg(orcWidget.Code(userAccount));
+    //query.exec(s);
+    //query.first();
+    //qDebug() << ok;
     isRepeated(rootItemModel, rootCount, catalogue_1, cata);
 
-    if(ok)
+    if(true)
     {
         rootItemModel->setItem(rootCount++, 0, new QStandardItem(catalogue_1));
         QColor nicePurple(200, 160, 255, 125);
@@ -265,20 +264,21 @@ void Widget::on_rootDeleteButton_clicked()
 
 void Widget::on_accountAddButton_clicked()
 {
-    Msg *msg = new Msg();
-    msg->exec();
+    Msg msg;
+    msg.exec();
 
-    if ("" == msg->trans) return;
+    if ("" == msg.trans) return;
 
     int row = ui->rootTable->currentIndex().row();
     qDebug() << row;
     if(row >= 0)
     {
-        bool ok;
-        qDebug() << msg->trans;
-        QString cata = msg->trans;
+        //bool ok;
+        qDebug() << msg.trans;
+        QString cata = msg.trans;
         isRepeated(accountItemModel, accountCount, catalogue_2, cata);
-        if(ok)
+        //qDebug() << ok;
+        if(true)
         {
             accountItemModel->setItem(accountCount++, 0, new QStandardItem(catalogue_2));
             QColor nicePurple(200, 160, 255, 125);

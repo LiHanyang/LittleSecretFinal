@@ -23,7 +23,7 @@ QString OrCode::byteToQString(const QByteArray &byte)
 {
     QString result;
     if(byte.size() > 0){
-      QTextCodec *codec = QTextCodec::codecForName("utf-8");
+      QTextCodec *codec = QTextCodec::codecForName("GBK");
       result = codec->toUnicode(byte);
     }
 
@@ -34,7 +34,7 @@ QByteArray OrCode::qstringToByte(const QString &strInfo)
 {
     QByteArray result;
     if(strInfo.length() > 0){
-      QTextCodec *codec = QTextCodec::codecForName("utf-8");
+      QTextCodec *codec = QTextCodec::codecForName("GBK");
       result = codec->fromUnicode(strInfo);
     }
 

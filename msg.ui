@@ -39,7 +39,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>OK</string>
+    <string>确定</string>
    </property>
   </widget>
   <widget class="QPushButton" name="cancelButton">
@@ -52,7 +52,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Cancel</string>
+    <string>取消</string>
    </property>
   </widget>
   <widget class="QPushButton" name="close1Button">
